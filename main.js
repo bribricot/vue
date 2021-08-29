@@ -1,33 +1,25 @@
 const app = Vue.createApp({
     data() {
         return {
-            cart: 0,
-            product: 'Socks',
-            image: './assets/images/socks_blue.jpg',
-            inStock: false,
-            details: ['50% cotton', '30% wool', '20% polyester'],
-            sizes: ['Small', 'Large', 'Extra-large'],
-            variants: [
-              { id: 2234, color: '#47bf67', image: './assets/images/socks_green.jpg' },
-              { id: 2235, color: '#1382e3', image: './assets/images/socks_blue.jpg' },
-            ]
+            cart: [],
+            premium: true,
+            details: ['Made in France', 'Quality']
         }
     },
     methods: {
-        addToCart() {
-            this.cart += 1
-        },
-        removeFromCart() {
-        	this.cart -= 1
-            	if (this.cart < 0) {
-                	this.cart = 0
+    	updateCart(id) {
+    		this.cart.push(id) 
+    	},
+    	/* To make our app more realistic, our cart shouldn’t just be a number. It should be an array that contains the IDS of the products that are added into it.*/
+    	removeFromCart(id) {
+    		const index = this.cart.indexOf(id)
+            if (index != -1) {
+                this.cart.splice(index, 1)
             }
-        },
-        emptyCart() {
-        	this.cart >= 1
-        },
-        updateImage(variantImage) {
-            this.image = variantImage
-        },
+	        /* The indexOf() method returns the FIRST index at which a given element can be found in the array, or -1 if it is NOT present. */
+
+	        /* The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. To access part of an array without modifying it, see slice(). */ 
+        }
     }
+
 })
