@@ -14,8 +14,11 @@
       <div class="cart">Cart({{ cart.length }})</div>
     <!-- On ne veut pas voir l'id visuellement, même si on le récupère dans un tableau. -->
       <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeFromCart" ></product-display>
+      <product-details :details="details"></product-details>
       <product-display @add-to-cart="updateCart" @remove-from-cart="removeFromCart"></product-display>
       <product-details :details="details"></product-details>
+
+
     </div>
     <!-- Import App -->
     <script src="./main.js"></script>
@@ -23,6 +26,12 @@
     <!-- Import Components -->
 	<script src="./components/ProductDisplay.js"></script>
     <script src="./components/ProductDetails.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    <script src="./components/ReviewList.js"></script>
+
+
+
+
 
     <!-- Mount App -->
     <script>

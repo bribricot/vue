@@ -3,6 +3,7 @@ app.component('product-display', {
 		premium: {
 			type: Boolean,
 			required: true
+
 		}
 	},
 	template:
@@ -29,6 +30,10 @@ app.component('product-display', {
 	            <button class="remove-button" @click="removeFromCart">Remove</button>
 	          </div>
 	        </div>
+	        <span class="tab" @click="selectedTab = 'Reviews'" :class="{ activeTab: selectedTab === 'Reviews'}">See reviews></span>
+	        <span class="tab" @click="selectedTab = 'Create'" :class="{ activeTab: selectedTab === 'Create'}">Create a review></span>
+	        <review-list v-if="selectedTab === 'Reviews'" :reviews="reviews"></review-list>
+ 	      	<review-form v-else @review-submitted="addReview"></review-form>
 	    </div>`,
     data() {
         return {
@@ -46,7 +51,9 @@ app.component('product-display', {
             variants: [
               { id: 2234, color: '#47bf67', image: './assets/images/socks_green.jpg', quantity: 50 },
               { id: 2235, color: '#1382e3', image: './assets/images/socks_blue.jpg', quantity: 0},
-            ]
+            ],
+            reviews: [],
+            selectedTab: 'Reviews'
         }
     },
     methods: {
@@ -75,6 +82,9 @@ app.component('product-display', {
         */
         updateVariant(index) {
    			this.selectedVariant = index	 
+		},
+		addReview (review) {
+			this.reviews.push(review)
 		}
     },
 
@@ -104,3 +114,11 @@ app.component('product-display', {
 })
 
 //payload : données utiles, par opposition au reste (métadonnées...), en français « charge utile ». Il s'agit par exemple de ce qu'un paquet réseau transfère pour le compte de son émetteur, par opposition aux informations qu'il recèle par ailleurs (destinées à la machinerie réseau, en particulier au routage).Cela désigne également ce qui permet l'activité malicieuse d'un malware (par exemple l'affichage de messages incongrus. 
+
+
+
+// Deux liens/boutons/whatever : Liste des reviews et Créer une review
+// Quand on clique sur Liste des Reviews, on voit reviewlist, quand on clique sur créer une review on voit reviewform. On voit Reviewlist par défaut
+
+
+

@@ -56,9 +56,21 @@ body {
   border-radius: 50%;
 }
 
+.tab {
+	font-size: 18px;
+	margin-left: 20px;
+    cursor: pointer;
+}
+
+.activeTab {
+   color: #16C0B0;
+   text-decoration: underline;
+}
+
 .out-of-stock-img {
 	opacity: 0.5;
 }
+
 .disabled-button {
   background-color: #c25246;
   cursor: not-allowed;
@@ -89,7 +101,7 @@ input {
 }
 
 label {
-  font-size: 20px;
+  font-size: 16px;
   margin-bottom: 5px;
 }
 
