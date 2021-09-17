@@ -1,4 +1,6 @@
-# real-world-vue
+# intro-to-vue
+
+First introduction to Vue, with Vue Mastery
 
 ## Project setup
 ```
